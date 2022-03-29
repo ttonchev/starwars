@@ -1,0 +1,29 @@
+version: '3.3'
+
+services:
+  #service 1: definition of mongo database
+  mongo_db:
+    image: mongo
+    container_name: mongoDB
+    restart: always
+    ports:
+      - 27017:27017
+    networks:
+      - my_network
+
+  #service 2:
+  starwarsservice:
+    image: starwars-service
+    container_name: starwars-service-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    restart: always
+    depends_on:
+      - mongo_db
+    networks:
+      - my_network
+networks:
+  my_network:
