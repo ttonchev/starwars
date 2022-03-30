@@ -61,10 +61,11 @@ class StarwarsApplicationTests {
 
   @Test
   public void testStarshipsOperations() throws Exception {
+    //TODO: mock swapi responses
     mvc.perform(get("/starships/")).andExpect(status().isOk()).andExpect(content().json(json(List.of())));
 
     mvc.perform(get("/starships/search?name=Death Star")).andExpect(status().isOk())
-        .andExpect(content().json("{\"id\":null,\"name\":\"Death Star\",\"count\":1}"));
+        .andExpect(content().json("{\"id\":1,\"name\":\"Death Star\",\"count\":1}"));
     mvc.perform(get("/starships/")).andExpect(status().isOk())
         .andExpect(content().json("[{\"id\":1,\"name\":\"Death Star\",\"count\":1}]"));
 
@@ -86,7 +87,7 @@ class StarwarsApplicationTests {
     mvc.perform(get("/vehicles/")).andExpect(status().isOk()).andExpect(content().json(json(List.of())));
 
     mvc.perform(get("/vehicles/search?name=Snowspeeder")).andExpect(status().isOk())
-        .andExpect(content().json("{\"id\":null,\"name\":\"Snowspeeder\",\"count\":1}"));
+        .andExpect(content().json("{\"id\":1,\"name\":\"Snowspeeder\",\"count\":1}"));
     mvc.perform(get("/vehicles/")).andExpect(status().isOk())
         .andExpect(content().json("[{\"id\":1,\"name\":\"Snowspeeder\",\"count\":1}]"));
 

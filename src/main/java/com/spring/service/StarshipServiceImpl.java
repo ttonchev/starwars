@@ -33,7 +33,7 @@ public class StarshipServiceImpl implements StarshipService{
 			Starship newStarship = new Starship(starship.getName(), 1);
 			newStarship.setId(sequenceGenerator.generateSequence(Starship.SEQUENCE_NAME));
 			starshipRepository.save(newStarship);
-			starshipWithCount = new Starship(newStarship.getName(), newStarship.getCount());
+			return newStarship;
 		}
 		return starshipWithCount;
 	}

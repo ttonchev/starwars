@@ -33,7 +33,7 @@ public class VehicleServiceImpl implements VehicleService {
 			Vehicle newVehicle = new Vehicle(vehicle.getName(), 1);
 			newVehicle.setId(sequenceGenerator.generateSequence(Vehicle.SEQUENCE_NAME));
 			vehicleRepository.save(newVehicle);
-			vehicleWithCount = new Vehicle(newVehicle.getName(), newVehicle.getCount());
+			return newVehicle;
 		}
 		return vehicleWithCount;
 	}
